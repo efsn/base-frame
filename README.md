@@ -1,2 +1,2 @@
-# base-frame
-the base frame of codeyn
+# frame-standard
+the standard frame of codeyn
