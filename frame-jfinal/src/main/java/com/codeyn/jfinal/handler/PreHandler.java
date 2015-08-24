@@ -1,36 +1,48 @@
-package com.codeyn.base.jfinal.handler;
+package com.codeyn.jfinal.handler;
 
 import java.util.Arrays;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringUtils;
-
 import com.jfinal.handler.Handler;
 
 /**
- * Uri suffix filter 
- * @author Arthur
+ * Uri suffix filter
+ * 
+ * @author Codeyn
  *
  */
-public class PreHandler extends Handler{
+public class PreHandler extends Handler {
 
     private static String DOT = ".";
-    private final List<String> suffixs = Arrays.asList("json", "html");
-    
+    private final String[] defaults = {"json", "html", "do"};
+
+    private Set<String> suffixs;
+
+    public PreHandler() {
+        suffixs = new HashSet<>();
+        suffixs.addAll(Arrays.asList(defaults));
+    }
+
+    public void addExts(String... exts) {
+        if (exts != null) {
+            suffixs.addAll(Arrays.asList(exts));
+        }
+    }
+
     @Override
-    public void handle(String target, HttpServletRequest request, HttpServletResponse response, boolean[] isHandled){
-        if(StringUtils.isBlank(target) || target.indexOf(DOT) == -1){
-            nextHandler.handle(target, request, response, isHandled);
-            return;
-        }
+    public void handle(String target, HttpServletRequest request, HttpServletResponse response, boolean[] isHandled) {
         int idx = target.indexOf(DOT);
-        String ext = target.substring(idx + 1);
-        if(suffixs.contains(ext)){
-            nextHandler.handle(target.substring(0, idx), request, response, isHandled);
+        if (idx > -1) {
+            String ext = target.substring(idx + 1);
+            if (suffixs.contains(ext)) {
+                target = target.substring(0, idx);
+            }
         }
+        nextHandler.handle(target, request, response, isHandled);
     }
 
 }

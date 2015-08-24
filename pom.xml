@@ -15,15 +15,15 @@
 	<module>frame-base</module>
 	<module>frame-jfinal</module>
 	
+	<module>frame-resource-bus</module>
+	<module>frame-zk</module>
 	<!--
 	
 	<module>frame-log</module>
 	
 	<module>frame-db</module>
 	<module>frame-dubbo</module>
-	<module>frame-zk</module>
 	
-	<module>resource-bus</module>
 	<module>resource-ds-depends</module>
 	<module>resource-mq-depends</module>
 	<module>resource-redis-depends</module>

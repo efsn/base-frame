@@ -66,9 +66,7 @@ public class SpringContextLocator {
                 context.addBeanFactoryPostProcessor(createProcessor(beanList));
 
                 /**
-                 * 在初始化之前先把context放到缓存中
-                 * 防止在初始化过程中存在循环调用，反复初始化
-                 * 造成程序卡死
+                 * 在初始化之前先把context放到缓存中 防止在初始化过程中存在循环调用，反复初始化 造成程序卡死
                  */
                 contexts.put(xmlName, context);
                 context.refresh();
@@ -82,24 +80,19 @@ public class SpringContextLocator {
         return context;
     }
 
-    private static BeanFactoryPostProcessor createProcessor(
-            final List<Object> beanList) {
+    private static BeanFactoryPostProcessor createProcessor(final List<Object> beanList) {
         return new BeanFactoryPostProcessor() {
             @Override
-            public void postProcessBeanFactory(
-                    ConfigurableListableBeanFactory beanFactory)
-                    throws BeansException {
+            public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
                 beanFactory.addBeanPostProcessor(new BeanPostProcessor() {
                     @Override
-                    public Object postProcessBeforeInitialization(Object bean,
-                            String beanName) throws BeansException {
+                    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
                         beanList.add(bean);
                         return bean;
                     }
 
                     @Override
-                    public Object postProcessAfterInitialization(Object bean,
-                            String beanName) throws BeansException {
+                    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
                         return bean;
                     }
                 });

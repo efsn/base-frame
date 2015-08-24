@@ -55,9 +55,7 @@ public class Money implements Serializable, Comparable<Object> {
      * <p>
      * 此处，“分”是指货币的最小单位，“元”是货币的最常用单位， 不同的币种有不同的元/分换算比例，如人民币是100，而日元为1。
      */
-    private static final int[] centFactors = new int[] {
-            1, 10, 100, 1000
-    };
+    private static final int[] centFactors = new int[] {1, 10, 100, 1000};
 
     /**
      * 金额，以分为单位。
@@ -257,9 +255,7 @@ public class Money implements Serializable, Comparable<Object> {
     public Money(BigDecimal amount, Currency currency, int roundingMode) {
         this.currency = currency;
         this.currencyCode = currency.getCurrencyCode();
-        this.cent = rounding(
-                amount.movePointRight(currency.getDefaultFractionDigits()),
-                roundingMode);
+        this.cent = rounding(amount.movePointRight(currency.getDefaultFractionDigits()), roundingMode);
     }
 
     // Bean方法 ====================================================
@@ -281,8 +277,7 @@ public class Money implements Serializable, Comparable<Object> {
      */
     public void setAmount(BigDecimal amount) {
         if (amount != null) {
-            cent = rounding(amount.movePointRight(2),
-                    BigDecimal.ROUND_HALF_EVEN);
+            cent = rounding(amount.movePointRight(2), BigDecimal.ROUND_HALF_EVEN);
         }
     }
 
@@ -385,8 +380,8 @@ public class Money implements Serializable, Comparable<Object> {
      *            另一对象。
      * @return -1表示小于，0表示等于，1表示大于。
      * @exception ClassCastException
-     *                待比较货币对象不是<code>Money</code>。
-     *                IllegalArgumentException 待比较货币对象与本货币对象的币种不同。
+     *                待比较货币对象不是<code>Money</code>。 IllegalArgumentException
+     *                待比较货币对象与本货币对象的币种不同。
      * @see java.lang.Comparable#compareTo(java.lang.Object)
      */
     public int compareTo(Object other) {

@@ -6,23 +6,20 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * Map生成辅助工具类
- * <br/>
- *  创建HashMap：<br/>
- *  HashMap<String,String> map = MapUtil.build().add("userId", userId)
- *                              .add("userName", userName) .add("memberId", memberId).toHashMap();
- * <br/>
- *  创建LinkedHashMap：<br/>
- *  LinkedHashMap<String,String> map = MapUtil.build().add("userId", userId)
- *                              .add("userName", userName) .add("memberId", memberId).toLinkedHashMap();
- *  <br/>                            
- *  创建TreeMap：<br/>
- *  TreeMap<String,String> map = MapUtil.build().add("userId", userId)
- *                              .add("userName", userName) .add("memberId", memberId).toTreeMap();     
- *  <br/>                            
- *  自定义Map泛型<br/>
- *  HashMap<Foo,Bar> map = MapUtil.build(Foo.class,Bar.class).add(foo, bar).toHashMap();              
- *   <br/>                              
+ * Map生成辅助工具类 <br/>
+ * 创建HashMap：<br/>
+ * HashMap<String,String> map = MapUtil.build().add("userId", userId)
+ * .add("userName", userName) .add("memberId", memberId).toHashMap(); <br/>
+ * 创建LinkedHashMap：<br/>
+ * LinkedHashMap<String,String> map = MapUtil.build().add("userId", userId)
+ * .add("userName", userName) .add("memberId", memberId).toLinkedHashMap(); <br/>
+ * 创建TreeMap：<br/>
+ * TreeMap<String,String> map = MapUtil.build().add("userId", userId)
+ * .add("userName", userName) .add("memberId", memberId).toTreeMap(); <br/>
+ * 自定义Map泛型<br/>
+ * HashMap<Foo,Bar> map = MapUtil.build(Foo.class,Bar.class).add(foo,
+ * bar).toHashMap(); <br/>
+ * 
  * @author leyr 2014年4月10日 下午2:54:17
  */
 public class MapUtil {

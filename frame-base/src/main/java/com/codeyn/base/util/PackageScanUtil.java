@@ -14,9 +14,7 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.util.ClassUtils;
 
 /**
- * 扫描指定的包及子包路径，返回满足条件的class数组
- * 包路径支持ant风格的模糊匹配
- * 如 com.sqq; com.sqq.*.config
+ * 扫描指定的包及子包路径，返回满足条件的class数组 包路径支持ant风格的模糊匹配 如 com.sqq; com.sqq.*.config
  **/
 public class PackageScanUtil {
 

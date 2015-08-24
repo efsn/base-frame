@@ -54,8 +54,10 @@ public class URIBuilder {
     /**
      * Construct an instance from the string which must be a valid URI.
      *
-     * @param string a valid URI in string form
-     * @throws URISyntaxException if the input is not a valid URI
+     * @param string
+     *            a valid URI in string form
+     * @throws URISyntaxException
+     *             if the input is not a valid URI
      */
     public URIBuilder(final String string) throws URISyntaxException {
         super();
@@ -70,6 +72,7 @@ public class URIBuilder {
 
     /**
      * Construct an instance from the provided URI.
+     * 
      * @param uri
      */
     public URIBuilder(final URI uri) {
@@ -185,8 +188,8 @@ public class URIBuilder {
     }
 
     /**
-     * Sets URI user info. The value is expected to be unescaped and may contain non ASCII
-     * characters.
+     * Sets URI user info. The value is expected to be unescaped and may contain
+     * non ASCII characters.
      */
     public URIBuilder setUserInfo(final String userInfo) {
         this.userInfo = userInfo;
@@ -197,8 +200,8 @@ public class URIBuilder {
     }
 
     /**
-     * Sets URI user info as a combination of username and password. These values are expected to
-     * be unescaped and may contain non ASCII characters.
+     * Sets URI user info as a combination of username and password. These
+     * values are expected to be unescaped and may contain non ASCII characters.
      */
     public URIBuilder setUserInfo(final String username, final String password) {
         return setUserInfo(username + ':' + password);
@@ -225,7 +228,8 @@ public class URIBuilder {
     }
 
     /**
-     * Sets URI path. The value is expected to be unescaped and may contain non ASCII characters.
+     * Sets URI path. The value is expected to be unescaped and may contain non
+     * ASCII characters.
      */
     public URIBuilder setPath(final String path) {
         this.path = path;
@@ -250,7 +254,8 @@ public class URIBuilder {
      * <p>
      * The value is expected to be encoded form data.
      *
-     * @deprecated (4.3) use {@link #setParameters(List)} or {@link #setParameters(NameValuePair...)}
+     * @deprecated (4.3) use {@link #setParameters(List)} or
+     *             {@link #setParameters(NameValuePair...)}
      *
      * @see URLEncodedUtils#parse
      */
@@ -264,11 +269,11 @@ public class URIBuilder {
     }
 
     /**
-     * Sets URI query parameters. The parameter name / values are expected to be unescaped
-     * and may contain non ASCII characters.
+     * Sets URI query parameters. The parameter name / values are expected to be
+     * unescaped and may contain non ASCII characters.
      * <p/>
-     * Please note query parameters and custom query component are mutually exclusive. This method
-     * will remove custom query if present.
+     * Please note query parameters and custom query component are mutually
+     * exclusive. This method will remove custom query if present.
      *
      * @since 4.3
      */
@@ -286,11 +291,11 @@ public class URIBuilder {
     }
 
     /**
-     * Adds URI query parameters. The parameter name / values are expected to be unescaped
-     * and may contain non ASCII characters.
+     * Adds URI query parameters. The parameter name / values are expected to be
+     * unescaped and may contain non ASCII characters.
      * <p/>
-     * Please note query parameters and custom query component are mutually exclusive. This method
-     * will remove custom query if present.
+     * Please note query parameters and custom query component are mutually
+     * exclusive. This method will remove custom query if present.
      *
      * @since 4.3
      */
@@ -306,11 +311,11 @@ public class URIBuilder {
     }
 
     /**
-     * Sets URI query parameters. The parameter name / values are expected to be unescaped
-     * and may contain non ASCII characters.
+     * Sets URI query parameters. The parameter name / values are expected to be
+     * unescaped and may contain non ASCII characters.
      * <p/>
-     * Please note query parameters and custom query component are mutually exclusive. This method
-     * will remove custom query if present.
+     * Please note query parameters and custom query component are mutually
+     * exclusive. This method will remove custom query if present.
      *
      * @since 4.3
      */
@@ -330,11 +335,11 @@ public class URIBuilder {
     }
 
     /**
-     * Adds parameter to URI query. The parameter name and value are expected to be unescaped
-     * and may contain non ASCII characters.
+     * Adds parameter to URI query. The parameter name and value are expected to
+     * be unescaped and may contain non ASCII characters.
      * <p/>
-     * Please note query parameters and custom query component are mutually exclusive. This method
-     * will remove custom query if present.
+     * Please note query parameters and custom query component are mutually
+     * exclusive. This method will remove custom query if present.
      */
     public URIBuilder addParameter(final String param, final String value) {
         if (this.queryParams == null) {
@@ -348,11 +353,12 @@ public class URIBuilder {
     }
 
     /**
-     * Sets parameter of URI query overriding existing value if set. The parameter name and value
-     * are expected to be unescaped and may contain non ASCII characters.
+     * Sets parameter of URI query overriding existing value if set. The
+     * parameter name and value are expected to be unescaped and may contain non
+     * ASCII characters.
      * <p/>
-     * Please note query parameters and custom query component are mutually exclusive. This method
-     * will remove custom query if present.
+     * Please note query parameters and custom query component are mutually
+     * exclusive. This method will remove custom query if present.
      */
     public URIBuilder setParameter(final String param, final String value) {
         if (this.queryParams == null) {
@@ -386,11 +392,11 @@ public class URIBuilder {
     }
 
     /**
-     * Sets custom URI query. The value is expected to be unescaped and may contain non ASCII
-     * characters.
+     * Sets custom URI query. The value is expected to be unescaped and may
+     * contain non ASCII characters.
      * <p/>
-     * Please note query parameters and custom query component are mutually exclusive. This method
-     * will remove query parameters if present.
+     * Please note query parameters and custom query component are mutually
+     * exclusive. This method will remove query parameters if present.
      *
      * @since 4.3
      */
@@ -403,8 +409,8 @@ public class URIBuilder {
     }
 
     /**
-     * Sets URI fragment. The value is expected to be unescaped and may contain non ASCII
-     * characters.
+     * Sets URI fragment. The value is expected to be unescaped and may contain
+     * non ASCII characters.
      */
     public URIBuilder setFragment(final String fragment) {
         this.fragment = fragment;

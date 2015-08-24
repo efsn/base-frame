@@ -36,9 +36,7 @@ public class ReadOfficeFileUtil {
     }
 
     /**
-     * 解析execl文件,此方法兼容2003和2007版本的execl
-     * Map为一行记录
-     * Map的key就是头行的值
+     * 解析execl文件,此方法兼容2003和2007版本的execl Map为一行记录 Map的key就是头行的值
      * 
      * @param execlFilePath
      *            文件路径
@@ -186,31 +184,31 @@ public class ReadOfficeFileUtil {
         int cellType = cell.getCellType();
 
         switch (cellType) {
-        case Cell.CELL_TYPE_BLANK:
-            break;
+            case Cell.CELL_TYPE_BLANK:
+                break;
 
-        case Cell.CELL_TYPE_BOOLEAN:
-            boolean cellValue = cell.getBooleanCellValue();
-            value = String.valueOf(cellValue);
-            break;
-        case Cell.CELL_TYPE_ERROR:
-            byte errorCellValue = cell.getErrorCellValue();
-            value = String.valueOf(errorCellValue);
-            break;
-        case Cell.CELL_TYPE_FORMULA:
-            String cellFormula = cell.getCellFormula();
-            value = cellFormula;
-            break;
-        case Cell.CELL_TYPE_NUMERIC:
-            double numericCellValue = cell.getNumericCellValue();
-            value = String.valueOf(numericCellValue);
-            break;
-        case Cell.CELL_TYPE_STRING:
-            value = cell.getStringCellValue();
-            break;
+            case Cell.CELL_TYPE_BOOLEAN:
+                boolean cellValue = cell.getBooleanCellValue();
+                value = String.valueOf(cellValue);
+                break;
+            case Cell.CELL_TYPE_ERROR:
+                byte errorCellValue = cell.getErrorCellValue();
+                value = String.valueOf(errorCellValue);
+                break;
+            case Cell.CELL_TYPE_FORMULA:
+                String cellFormula = cell.getCellFormula();
+                value = cellFormula;
+                break;
+            case Cell.CELL_TYPE_NUMERIC:
+                double numericCellValue = cell.getNumericCellValue();
+                value = String.valueOf(numericCellValue);
+                break;
+            case Cell.CELL_TYPE_STRING:
+                value = cell.getStringCellValue();
+                break;
 
-        default:
-            break;
+            default:
+                break;
         }
 
         return value;
@@ -242,8 +240,7 @@ public class ReadOfficeFileUtil {
     }
 
     /**
-     * 验证文件路径是否为空
-     * 验证文件是否存在
+     * 验证文件路径是否为空 验证文件是否存在
      * 
      * @param filePath
      *            文件路径

@@ -1,35 +1,41 @@
 package com.codeyn.jfinal.plugins.spring;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+import com.jfinal.kit.PathKit;
+import com.jfinal.plugin.IPlugin;
 
-/**
- * Inject.
- */
-public class SpringPlugin {
-    
-    private SpringPlugin() {}
-    
-    @Inherited
-    @Retention(RetentionPolicy.RUNTIME)
-    @Target({ElementType.FIELD})
-    public static @interface BY_TYPE {}
-    
-    @Inherited
-    @Retention(RetentionPolicy.RUNTIME)
-    @Target({ElementType.FIELD})
-    public static @interface BY_NAME {}
-    
-    /*
-    @Inherited
-    @Retention(RetentionPolicy.RUNTIME)
-    @Target({ElementType.FIELD})
-    public static @interface IGNORE {}
-    */
+public class SpringPlugin implements IPlugin {
+
+    private String[] configurations;
+    private ApplicationContext ctx;
+
+    /**
+     * Use configuration under the path of WebRoot/WEB-INF.
+     */
+    public SpringPlugin() {
+    }
+
+    public SpringPlugin(String... configurations) {
+        this.configurations = configurations;
+    }
+
+    public SpringPlugin(ApplicationContext ctx) {
+        this.ctx = ctx;
+    }
+
+    public boolean start() {
+        if (ctx != null)
+            IocInterceptor.ctx = ctx;
+        else if (configurations != null)
+            IocInterceptor.ctx = new FileSystemXmlApplicationContext(configurations);
+        else
+            IocInterceptor.ctx = new FileSystemXmlApplicationContext(PathKit.getWebRootPath()
+                    + "/WEB-INF/applicationContext.xml");
+        return true;
+    }
+
+    public boolean stop() {
+        return true;
+    }
 }
-
-
-

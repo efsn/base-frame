@@ -1,14 +1,17 @@
 package com.codeyn.resouce.bus.ds;
 
+import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.Assert;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.codeyn.base.common.Assert;
+import com.codeyn.resouce.bus.ConfigLoader;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.mchange.v2.c3p0.DriverManagerDataSource;
 
@@ -27,7 +30,7 @@ public class DataSourceFactory {
     }
 
     public static DruidDataSource buildDruidDs(String dsName, Properties connectionProp, Properties dsProp) {
-        DataSourceConfig dsc = requiredDsCfg(dsName);
+        DataSourceConfig dsc = buildDsCfg(dsName);
         DruidDataSource dds = new DruidDataSource();
 
         dds.setUrl(dsc.getUrl());
@@ -44,10 +47,14 @@ public class DataSourceFactory {
     }
 
     public static ComboPooledDataSource buildC3p0Ds(String dsName, Properties connectionProp, Properties dsProp) {
-        DataSourceConfig dsc = requiredDsCfg(dsName);
+        DataSourceConfig dsc = buildDsCfg(dsName);
         ComboPooledDataSource ds = new ComboPooledDataSource();
 
-        ds.setDriverClass(dsc.getDriverClass());
+        try {
+            ds.setDriverClass(dsc.getDriverClass());
+        } catch (PropertyVetoException e) {
+            throw new RuntimeException("build database error", e);
+        }
         ds.setJdbcUrl(dsc.getUrl());
         ds.setUser(dsc.getUser());
         ds.setPassword(dsc.getPassword());
@@ -68,14 +75,14 @@ public class DataSourceFactory {
         return ds;
     }
 
-    public static DriverManagerDataSource buildSimpleDataSource(String dsName) {
-        return buildSimpleDataSource(dsName, null, null);
+    public static DriverManagerDataSource buildSimpleDs(String dsName) {
+        return buildSimpleDs(dsName, null, null);
     }
 
-    public static DriverManagerDataSource buildSimpleDataSource(String dsName,
+    public static DriverManagerDataSource buildSimpleDs(String dsName,
                                                                 Properties connectionProp,
                                                                 Properties dsProp) {
-        DataSourceConfig dsc = requiredDsCfg(dsName);
+        DataSourceConfig dsc = buildDsCfg(dsName);
         DriverManagerDataSource ds = new DriverManagerDataSource();
 
         ds.setDriverClass(dsc.getDriverClass());
@@ -107,16 +114,36 @@ public class DataSourceFactory {
                 return buildC3p0Ds(dsName, connectionProp, dsProp);
                 
             case SIMPLE:
-                return buildSimpleDataSource(dsName, connectionProp, dsProp);
+                return buildSimpleDs(dsName, connectionProp, dsProp);
                 
             default:
                     return buildDruidDs(dsName, connectionProp, dsProp);
         }
     }
     
-    private static DataSourceConfig buildDsConfig(String dsName) {
-        Assert.hasText(dsName, "dsName");
-        DataSourceConfig dsc = Configloader.getDsConfig(dsName);
+    private static DataSourceConfig buildDsCfg(String dsName) {
+        Assert.hasText(dsName, "dsName must not be empty");
+        DataSourceConfig dsc = ConfigLoader.getDsCfg(dsName);
+        if (dsc == null) {
+            throw new IllegalArgumentException("no database setting for name '".concat(dsName).concat("'"));
+        } else {
+            logger.info("load database config success, dsName:{}, {}", dsName, dsc);
+        }
+        if (dsc.getDriverClass() == null) {
+            // default is mysql
+            dsc.setDriverClass("com.mysql.jdbc.Driver");
+        }
+        return dsc;
+    }
+
+    private static void copyDsProp(DataSource ds, Properties dsProp) {
+        if (dsProp != null) {
+            try {
+                BeanUtils.copyProperties(ds, dsProp);
+            } catch (Exception e) {
+                logger.error("build data source error", e);
+            }
+        }
     }
 
 }

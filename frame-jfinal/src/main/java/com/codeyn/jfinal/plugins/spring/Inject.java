@@ -6,30 +6,28 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * Inject.
- */
 public class Inject {
-    
-    private Inject() {}
-    
+
+    private Inject() {
+    }
+
     @Inherited
     @Retention(RetentionPolicy.RUNTIME)
     @Target({ElementType.FIELD})
-    public static @interface BY_TYPE {}
-    
+    public static @interface BY_TYPE {
+    }
+
     @Inherited
     @Retention(RetentionPolicy.RUNTIME)
     @Target({ElementType.FIELD})
-    public static @interface BY_NAME {}
-    
+    public static @interface BY_NAME {
+    }
+
     /*
-    @Inherited
-    @Retention(RetentionPolicy.RUNTIME)
-    @Target({ElementType.FIELD})
-    public static @interface IGNORE {}
-    */
+     * @Inherited
+     * 
+     * @Retention(RetentionPolicy.RUNTIME)
+     * 
+     * @Target({ElementType.FIELD}) public static @interface IGNORE {}
+     */
 }
-
-
-

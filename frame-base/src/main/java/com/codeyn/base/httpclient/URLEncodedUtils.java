@@ -43,9 +43,11 @@ public class URLEncodedUtils {
     private static final String NAME_VALUE_SEPARATOR = "=";
 
     /**
-     * Returns a list of {@link NameValuePair NameValuePairs} as built from the URI's query portion. For example, a URI
-     * of http://example.org/path/to/file?a=1&b=2&c=3 would return a list of three NameValuePairs, one for a=1, one for
-     * b=2, and one for c=3. By convention, {@code '&'} and {@code ';'} are accepted as parameter separators.
+     * Returns a list of {@link NameValuePair NameValuePairs} as built from the
+     * URI's query portion. For example, a URI of
+     * http://example.org/path/to/file?a=1&b=2&c=3 would return a list of three
+     * NameValuePairs, one for a=1, one for b=2, and one for c=3. By convention,
+     * {@code '&'} and {@code ';'} are accepted as parameter separators.
      * <p>
      * This is typically useful while parsing an HTTP PUT.
      *
@@ -55,7 +57,8 @@ public class URLEncodedUtils {
      *            URI to parse
      * @param charset
      *            Charset name to use while parsing the query
-     * @return a list of {@link NameValuePair} as built from the URI's query portion.
+     * @return a list of {@link NameValuePair} as built from the URI's query
+     *         portion.
      */
     public static List<NameValuePair> parse(final URI uri, final String charset) {
         final String query = uri.getRawQuery();
@@ -69,14 +72,16 @@ public class URLEncodedUtils {
     }
 
     /**
-     * Returns a list of {@link NameValuePair NameValuePairs} as parsed from an {@link HttpEntity}. The encoding is
-     * taken from the entity's Content-Encoding header.
+     * Returns a list of {@link NameValuePair NameValuePairs} as parsed from an
+     * {@link HttpEntity}. The encoding is taken from the entity's
+     * Content-Encoding header.
      * <p>
      * This is typically used while parsing an HTTP POST.
      *
      * @param entity
      *            The entity to parse
-     * @return a list of {@link NameValuePair} as built from the URI's query portion.
+     * @return a list of {@link NameValuePair} as built from the URI's query
+     *         portion.
      * @throws IOException
      *             If there was an exception getting the entity's data.
      */
@@ -115,10 +120,12 @@ public class URLEncodedUtils {
     }
 
     /**
-     * Adds all parameters within the Scanner to the list of <code>parameters</code>, as encoded by
-     * <code>encoding</code>. For example, a scanner containing the string <code>a=1&b=2&c=3</code> would add the
-     * {@link NameValuePair NameValuePairs} a=1, b=2, and c=3 to the list of parameters. By convention, {@code '&'} and
-     * {@code ';'} are accepted as parameter separators.
+     * Adds all parameters within the Scanner to the list of
+     * <code>parameters</code>, as encoded by <code>encoding</code>. For
+     * example, a scanner containing the string <code>a=1&b=2&c=3</code> would
+     * add the {@link NameValuePair NameValuePairs} a=1, b=2, and c=3 to the
+     * list of parameters. By convention, {@code '&'} and {@code ';'} are
+     * accepted as parameter separators.
      *
      * @param parameters
      *            List to add parameters to.
@@ -143,7 +150,8 @@ public class URLEncodedUtils {
      * @param scanner
      *            Input that contains the parameters to parse.
      * @param parameterSepartorPattern
-     *            The Pattern string for parameter separators, by convention {@code "[&;]"}
+     *            The Pattern string for parameter separators, by convention
+     *            {@code "[&;]"}
      * @param charset
      *            Encoding to use when decoding the parameters.
      */
@@ -168,9 +176,7 @@ public class URLEncodedUtils {
     /**
      * Query parameter separators.
      */
-    private static final char[] QP_SEPS = new char[] {
-            QP_SEP_A, QP_SEP_S
-    };
+    private static final char[] QP_SEPS = new char[] {QP_SEP_A, QP_SEP_S};
 
     /**
      * Query parameter separator pattern.
@@ -178,14 +184,16 @@ public class URLEncodedUtils {
     private static final String QP_SEP_PATTERN = "[" + new String(QP_SEPS) + "]";
 
     /**
-     * Returns a list of {@link NameValuePair NameValuePairs} as parsed from the given string using the given character
-     * encoding. By convention, {@code '&'} and {@code ';'} are accepted as parameter separators.
+     * Returns a list of {@link NameValuePair NameValuePairs} as parsed from the
+     * given string using the given character encoding. By convention,
+     * {@code '&'} and {@code ';'} are accepted as parameter separators.
      *
      * @param s
      *            text to parse.
      * @param charset
      *            Encoding to use when decoding the parameters.
-     * @return a list of {@link NameValuePair} as built from the URI's query portion.
+     * @return a list of {@link NameValuePair} as built from the URI's query
+     *         portion.
      *
      * @since 4.2
      */
@@ -194,16 +202,18 @@ public class URLEncodedUtils {
     }
 
     /**
-     * Returns a list of {@link NameValuePair NameValuePairs} as parsed from the given string using the given character
-     * encoding.
+     * Returns a list of {@link NameValuePair NameValuePairs} as parsed from the
+     * given string using the given character encoding.
      *
      * @param s
      *            text to parse.
      * @param charset
      *            Encoding to use when decoding the parameters.
      * @param parameterSeparator
-     *            The characters used to separate parameters, by convention, {@code '&'} and {@code ';'}.
-     * @return a list of {@link NameValuePair} as built from the URI's query portion.
+     *            The characters used to separate parameters, by convention,
+     *            {@code '&'} and {@code ';'}.
+     * @return a list of {@link NameValuePair} as built from the URI's query
+     *         portion.
      *
      * @since 4.3
      */
@@ -227,11 +237,14 @@ public class URLEncodedUtils {
     }
 
     /**
-     * Returns a String that is suitable for use as an {@code application/x-www-form-urlencoded}
-     * list of parameters in an HTTP PUT or HTTP POST.
+     * Returns a String that is suitable for use as an
+     * {@code application/x-www-form-urlencoded} list of parameters in an HTTP
+     * PUT or HTTP POST.
      *
-     * @param parameters  The parameters to include.
-     * @param charset The encoding to use.
+     * @param parameters
+     *            The parameters to include.
+     * @param charset
+     *            The encoding to use.
      * @return An {@code application/x-www-form-urlencoded} string
      */
     public static String format(final List<? extends NameValuePair> parameters, final String charset) {
@@ -239,12 +252,17 @@ public class URLEncodedUtils {
     }
 
     /**
-     * Returns a String that is suitable for use as an {@code application/x-www-form-urlencoded}
-     * list of parameters in an HTTP PUT or HTTP POST.
+     * Returns a String that is suitable for use as an
+     * {@code application/x-www-form-urlencoded} list of parameters in an HTTP
+     * PUT or HTTP POST.
      *
-     * @param parameters  The parameters to include.
-     * @param parameterSeparator The parameter separator, by convention, {@code '&'} or {@code ';'}.
-     * @param charset The encoding to use.
+     * @param parameters
+     *            The parameters to include.
+     * @param parameterSeparator
+     *            The parameter separator, by convention, {@code '&'} or
+     *            {@code ';'}.
+     * @param charset
+     *            The encoding to use.
      * @return An {@code application/x-www-form-urlencoded} string
      *
      * @since 4.3
@@ -268,11 +286,14 @@ public class URLEncodedUtils {
     }
 
     /**
-     * Returns a String that is suitable for use as an {@code application/x-www-form-urlencoded}
-     * list of parameters in an HTTP PUT or HTTP POST.
+     * Returns a String that is suitable for use as an
+     * {@code application/x-www-form-urlencoded} list of parameters in an HTTP
+     * PUT or HTTP POST.
      *
-     * @param parameters  The parameters to include.
-     * @param charset The encoding to use.
+     * @param parameters
+     *            The parameters to include.
+     * @param charset
+     *            The encoding to use.
      * @return An {@code application/x-www-form-urlencoded} string
      *
      * @since 4.2
@@ -282,12 +303,17 @@ public class URLEncodedUtils {
     }
 
     /**
-     * Returns a String that is suitable for use as an {@code application/x-www-form-urlencoded}
-     * list of parameters in an HTTP PUT or HTTP POST.
+     * Returns a String that is suitable for use as an
+     * {@code application/x-www-form-urlencoded} list of parameters in an HTTP
+     * PUT or HTTP POST.
      *
-     * @param parameters  The parameters to include.
-     * @param parameterSeparator The parameter separator, by convention, {@code '&'} or {@code ';'}.
-     * @param charset The encoding to use.
+     * @param parameters
+     *            The parameters to include.
+     * @param parameterSeparator
+     *            The parameter separator, by convention, {@code '&'} or
+     *            {@code ';'}.
+     * @param charset
+     *            The encoding to use.
      * @return An {@code application/x-www-form-urlencoded} string
      *
      * @since 4.3
@@ -313,8 +339,8 @@ public class URLEncodedUtils {
     /**
      * Unreserved characters, i.e. alphanumeric, plus: {@code _ - ! . ~ ' ( ) *}
      * <p>
-     *  This list is the same as the {@code unreserved} list in
-     *  <a href="http://www.ietf.org/rfc/rfc2396.txt">RFC 2396</a>
+     * This list is the same as the {@code unreserved} list in <a
+     * href="http://www.ietf.org/rfc/rfc2396.txt">RFC 2396</a>
      */
     private static final BitSet UNRESERVED = new BitSet(256);
     /**
@@ -323,29 +349,35 @@ public class URLEncodedUtils {
      * These are the additional characters allowed by userinfo.
      */
     private static final BitSet PUNCT = new BitSet(256);
-    /** Characters which are safe to use in userinfo,
-     * i.e. {@link #UNRESERVED} plus {@link #PUNCT}uation */
+    /**
+     * Characters which are safe to use in userinfo, i.e. {@link #UNRESERVED}
+     * plus {@link #PUNCT}uation
+     */
     private static final BitSet USERINFO = new BitSet(256);
-    /** Characters which are safe to use in a path,
-     * i.e. {@link #UNRESERVED} plus {@link #PUNCT}uation plus / @ */
+    /**
+     * Characters which are safe to use in a path, i.e. {@link #UNRESERVED} plus
+     * {@link #PUNCT}uation plus / @
+     */
     private static final BitSet PATHSAFE = new BitSet(256);
-    /** Characters which are safe to use in a query or a fragment,
-     * i.e. {@link #RESERVED} plus {@link #UNRESERVED} */
+    /**
+     * Characters which are safe to use in a query or a fragment, i.e.
+     * {@link #RESERVED} plus {@link #UNRESERVED}
+     */
     private static final BitSet URIC = new BitSet(256);
 
     /**
      * Reserved characters, i.e. {@code ;/?:@&=+$,[]}
      * <p>
-     *  This list is the same as the {@code reserved} list in
-     *  <a href="http://www.ietf.org/rfc/rfc2396.txt">RFC 2396</a>
-     *  as augmented by
-     *  <a href="http://www.ietf.org/rfc/rfc2732.txt">RFC 2732</a>
+     * This list is the same as the {@code reserved} list in <a
+     * href="http://www.ietf.org/rfc/rfc2396.txt">RFC 2396</a> as augmented by
+     * <a href="http://www.ietf.org/rfc/rfc2732.txt">RFC 2732</a>
      */
     private static final BitSet RESERVED = new BitSet(256);
 
     /**
-     * Safe characters for x-www-form-urlencoded data, as per java.net.URLEncoder and browser behaviour,
-     * i.e. alphanumeric plus {@code "-", "_", ".", "*"}
+     * Safe characters for x-www-form-urlencoded data, as per
+     * java.net.URLEncoder and browser behaviour, i.e. alphanumeric plus
+     * {@code "-", "_", ".", "*"}
      */
     private static final BitSet URLENCODER = new BitSet(256);
 
@@ -440,11 +472,16 @@ public class URLEncodedUtils {
     }
 
     /**
-     * Decode/unescape a portion of a URL, to use with the query part ensure {@code plusAsBlank} is true.
+     * Decode/unescape a portion of a URL, to use with the query part ensure
+     * {@code plusAsBlank} is true.
      *
-     * @param content the portion to decode
-     * @param charset the charset to use
-     * @param plusAsBlank if {@code true}, then convert '+' to space (e.g. for www-url-form-encoded content), otherwise leave as is.
+     * @param content
+     *            the portion to decode
+     * @param charset
+     *            the charset to use
+     * @param plusAsBlank
+     *            if {@code true}, then convert '+' to space (e.g. for
+     *            www-url-form-encoded content), otherwise leave as is.
      * @return encoded string
      */
     private static String urlDecode(final String content, final Charset charset, final boolean plusAsBlank) {
@@ -480,8 +517,10 @@ public class URLEncodedUtils {
     /**
      * Decode/unescape www-url-form-encoded content.
      *
-     * @param content the content to decode, will decode '+' as space
-     * @param charset the charset to use
+     * @param content
+     *            the content to decode, will decode '+' as space
+     * @param charset
+     *            the charset to use
      * @return encoded string
      */
     private static String decodeFormFields(final String content, final String charset) {
@@ -494,8 +533,10 @@ public class URLEncodedUtils {
     /**
      * Decode/unescape www-url-form-encoded content.
      *
-     * @param content the content to decode, will decode '+' as space
-     * @param charset the charset to use
+     * @param content
+     *            the content to decode, will decode '+' as space
+     * @param charset
+     *            the charset to use
      * @return encoded string
      */
     private static String decodeFormFields(final String content, final Charset charset) {
@@ -508,12 +549,14 @@ public class URLEncodedUtils {
     /**
      * Encode/escape www-url-form-encoded content.
      * <p>
-     * Uses the {@link #URLENCODER} set of characters, rather than
-     * the {@link #UNRSERVED} set; this is for compatibilty with previous
-     * releases, URLEncoder.encode() and most browsers.
+     * Uses the {@link #URLENCODER} set of characters, rather than the
+     * {@link #UNRSERVED} set; this is for compatibilty with previous releases,
+     * URLEncoder.encode() and most browsers.
      *
-     * @param content the content to encode, will convert space to '+'
-     * @param charset the charset to use
+     * @param content
+     *            the content to encode, will convert space to '+'
+     * @param charset
+     *            the charset to use
      * @return encoded string
      */
     private static String encodeFormFields(final String content, final String charset) {
@@ -526,12 +569,14 @@ public class URLEncodedUtils {
     /**
      * Encode/escape www-url-form-encoded content.
      * <p>
-     * Uses the {@link #URLENCODER} set of characters, rather than
-     * the {@link #UNRSERVED} set; this is for compatibilty with previous
-     * releases, URLEncoder.encode() and most browsers.
+     * Uses the {@link #URLENCODER} set of characters, rather than the
+     * {@link #UNRSERVED} set; this is for compatibilty with previous releases,
+     * URLEncoder.encode() and most browsers.
      *
-     * @param content the content to encode, will convert space to '+'
-     * @param charset the charset to use
+     * @param content
+     *            the content to encode, will convert space to '+'
+     * @param charset
+     *            the charset to use
      * @return encoded string
      */
     private static String encodeFormFields(final String content, final Charset charset) {
@@ -546,8 +591,10 @@ public class URLEncodedUtils {
      * <p>
      * Used by URIBuilder to encode the userinfo segment.
      *
-     * @param content the string to encode, does not convert space to '+'
-     * @param charset the charset to use
+     * @param content
+     *            the string to encode, does not convert space to '+'
+     * @param charset
+     *            the charset to use
      * @return the encoded string
      */
     static String encUserInfo(final String content, final Charset charset) {
@@ -559,8 +606,10 @@ public class URLEncodedUtils {
      * <p>
      * Used by URIBuilder to encode the query and fragment segments.
      *
-     * @param content the string to encode, does not convert space to '+'
-     * @param charset the charset to use
+     * @param content
+     *            the string to encode, does not convert space to '+'
+     * @param charset
+     *            the charset to use
      * @return the encoded string
      */
     static String encUric(final String content, final Charset charset) {
@@ -572,8 +621,10 @@ public class URLEncodedUtils {
      * <p>
      * Used by URIBuilder to encode path segments.
      *
-     * @param content the string to encode, does not convert space to '+'
-     * @param charset the charset to use
+     * @param content
+     *            the string to encode, does not convert space to '+'
+     * @param charset
+     *            the charset to use
      * @return the encoded string
      */
     static String encPath(final String content, final Charset charset) {

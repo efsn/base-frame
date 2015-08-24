@@ -7,12 +7,12 @@ import java.util.Properties;
 import com.codeyn.zk.core.ZkEngine;
 import com.codeyn.zk.exception.ZookeeperException;
 
-public class SqqZkContext {
+public class ZkContext {
 
     private static String HOSTS_PROPERTY_KEY = "zkHosts";
     private static String CLASSPATH_CONFIG_FILE = "resource-test.properties";
 
-    private SqqZkContext() {
+    private ZkContext() {
     }
 
     public static boolean isHostsSet() {

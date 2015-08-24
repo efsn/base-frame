@@ -70,7 +70,7 @@ public class WebLogFilter implements Filter {
     }
 
     private String makeToken() {
-        //生成请求token加到日志上下文中
+        // 生成请求token加到日志上下文中
         String nanoPart = String.format("%03d", System.nanoTime() % 1000);
         return String.valueOf(System.currentTimeMillis()).substring(8) + nanoPart;
     }

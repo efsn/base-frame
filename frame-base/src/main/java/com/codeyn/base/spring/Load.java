@@ -6,8 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 声明从指定的一个locator中注入依赖bean
- * 该注解用于类的成员变量上面，支持静态变量和私有变量
+ * 声明从指定的一个locator中注入依赖bean 该注解用于类的成员变量上面，支持静态变量和私有变量
  * 
  * @author leyuanren 2013-8-27 下午4:22:29
  */

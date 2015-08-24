@@ -40,51 +40,51 @@ public class DataResult extends BaseResult {
     }
 
     public String getString(String key) {
-        return this.get(key, String.class);
+        return get(key, String.class);
     }
 
     public Integer getInt(String key) {
-        return this.get(key, Integer.class);
+        return get(key, Integer.class);
     }
 
     public Long getLong(String key) {
-        return this.get(key, Long.class);
+        return get(key, Long.class);
     }
 
     public Double getDouble(String key) {
-        return this.get(key, Double.class);
+        return get(key, Double.class);
     }
 
     public Float getFloat(String key) {
-        return this.get(key, Float.class);
+        return get(key, Float.class);
     }
 
     public Boolean getBoolean(String key) {
-        return this.get(key, Boolean.class);
+        return get(key, Boolean.class);
     }
 
     public Byte getByte(String key) {
-        return this.get(key, Byte.class);
+        return get(key, Byte.class);
     }
 
     public Character getChar(String key) {
-        return this.get(key, Character.class);
+        return get(key, Character.class);
     }
 
     public Short getShort(String key) {
-        return this.get(key, Short.class);
+        return get(key, Short.class);
     }
 
     public BigDecimal getBigDecimal(String key) {
-        return this.get(key, BigDecimal.class);
+        return get(key, BigDecimal.class);
     }
 
     public BigInteger getBigInteger(String key) {
-        return this.get(key, BigInteger.class);
+        return get(key, BigInteger.class);
     }
 
     public Date getDate(String key) {
-        return this.get(key, Date.class);
+        return get(key, Date.class);
     }
 
     @Override

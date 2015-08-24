@@ -21,7 +21,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.mchange.v2.c3p0.DriverManagerDataSource;
 
 /**
- * DataSource factory
+ * DataSource factory bean
  * 
  * @author Codeyn
  *
@@ -32,7 +32,7 @@ public class DataSourceFactoryBean implements FactoryBean<DataSource>, Initializ
 
     private String dsName;
     private String dsType;
-    private DataSource dsTarget;
+    private DataSource ds;
     private Class<?> dsClazz;
 
     private String driverClassFiled = "driverClass";
@@ -73,7 +73,7 @@ public class DataSourceFactoryBean implements FactoryBean<DataSource>, Initializ
     }
 
     public void setDsTarget(DataSource dsTarget) {
-        this.dsTarget = dsTarget;
+        this.ds = dsTarget;
     }
 
     public void setDsProps(Properties dsProps) {
@@ -87,8 +87,8 @@ public class DataSourceFactoryBean implements FactoryBean<DataSource>, Initializ
     @Override
     public void afterPropertiesSet() throws Exception {
         Assert.hasText(dsName, "Argument 'dbName' can't be empty.");
-        if (dsTarget != null) {
-            dsClazz = dsTarget.getClass();
+        if (ds != null) {
+            dsClazz = ds.getClass();
         } else {
             if (dsType == null) {
                 dsType = "pool";
@@ -96,24 +96,24 @@ public class DataSourceFactoryBean implements FactoryBean<DataSource>, Initializ
             switch (dsType) {
                 case "druid":
                     dsClazz = DruidDataSource.class;
-                    dsTarget = DataSourceFactory.buildDruidDs(dsName, connectionProps, dsProps);
+                    ds = DataSourceFactory.buildDruidDs(dsName, connectionProps, dsProps);
                     break;
                 case "pool":
                 case "c3p0":
                     dsClazz = ComboPooledDataSource.class;
-                    dsTarget = DataSourceFactory.buildC3p0Ds(dsName, connectionProps, dsProps);
+                    ds = DataSourceFactory.buildC3p0Ds(dsName, connectionProps, dsProps);
                     break;
                 case "normal":
                 case "simple":
                     dsClazz = DriverManagerDataSource.class;
-                    dsTarget = DataSourceFactory.buildSimpleDs(dsName, connectionProps, dsProps);
+                    ds = DataSourceFactory.buildSimpleDs(dsName, connectionProps, dsProps);
                     break;
                 default:
                     dsClazz = Class.forName(dsType);
                     if (!DataSource.class.isAssignableFrom(dsClazz)) {
                         throw new IllegalArgumentException("dsClass must be 'javax.sql.DataSource' or it's subclass");
                     }
-                    dsTarget = (DataSource) dsClazz.newInstance();
+                    ds = (DataSource) dsClazz.newInstance();
                     initDataSource();
             }
         }
@@ -122,7 +122,7 @@ public class DataSourceFactoryBean implements FactoryBean<DataSource>, Initializ
 
     @Override
     public DataSource getObject() throws Exception {
-        return dsTarget;
+        return ds;
     }
 
     @Override
@@ -142,16 +142,16 @@ public class DataSourceFactoryBean implements FactoryBean<DataSource>, Initializ
         } else {
             logger.info("load database info success. dsName: {}, {}", dsName, dsc);
         }
-        BeanUtils.copyProperty(dsTarget, driverClassFiled, dsc.getDriverClass());
-        BeanUtils.copyProperty(dsTarget, jdbcUrlFiled, dsc.getUrl());
-        BeanUtils.copyProperty(dsTarget, userFiled, dsc.getUser());
-        BeanUtils.copyProperty(dsTarget, passwordFiled, dsc.getPassword());
+        BeanUtils.copyProperty(ds, driverClassFiled, dsc.getDriverClass());
+        BeanUtils.copyProperty(ds, jdbcUrlFiled, dsc.getUrl());
+        BeanUtils.copyProperty(ds, userFiled, dsc.getUser());
+        BeanUtils.copyProperty(ds, passwordFiled, dsc.getPassword());
         if (connectionProps != null) {
-            BeanUtils.copyProperty(dsTarget, connectionPropsFiled, connectionProps);
+            BeanUtils.copyProperty(ds, connectionPropsFiled, connectionProps);
         }
         if (dsProps != null) {
             Map<Object, Object> map = new HashMap<>(dsProps);
-            BeanUtils.copyProperties(dsTarget, map);
+            BeanUtils.copyProperties(ds, map);
         }
     }
 
@@ -161,10 +161,10 @@ public class DataSourceFactoryBean implements FactoryBean<DataSource>, Initializ
 
     @Override
     public void destroy() throws Exception {
-        if (dsTarget instanceof ComboPooledDataSource) {
-            ((ComboPooledDataSource) dsTarget).close();
-        } else if (dsTarget instanceof Closeable) {
-            ((Closeable) dsTarget).close();
+        if (ds instanceof ComboPooledDataSource) {
+            ((ComboPooledDataSource) ds).close();
+        } else if (ds instanceof Closeable) {
+            ((Closeable) ds).close();
         }
     }
 

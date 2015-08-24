@@ -33,6 +33,16 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.codeyn</groupId>
+			<artifactId>frame-resource-bus</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.codeyn</groupId>
+			<artifactId>frame-base</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>com.jfinal</groupId>
 			<artifactId>jfinal</artifactId>
 		</dependency>
@@ -40,16 +50,6 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
 		</dependency>
 
 		<dependency>
@@ -63,9 +63,13 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>

@@ -74,11 +74,9 @@ public class DateUtil {
      */
     public static String getDateStart(Date date1, Date date2) {
         if (date1.before(date2)) {
-            return new SimpleDateFormat("yyyy-MM-dd").format(date1)
-                    + " 00:00:00";
+            return new SimpleDateFormat("yyyy-MM-dd").format(date1) + " 00:00:00";
         } else {
-            return new SimpleDateFormat("yyyy-MM-dd").format(date2)
-                    + " 00:00:00";
+            return new SimpleDateFormat("yyyy-MM-dd").format(date2) + " 00:00:00";
         }
     }
 
@@ -93,11 +91,9 @@ public class DateUtil {
      */
     public static String getDateEnd(Date date1, Date date2) {
         if (date1.before(date2)) {
-            return new SimpleDateFormat("yyyy-MM-dd").format(date2)
-                    + " 23:59:59";
+            return new SimpleDateFormat("yyyy-MM-dd").format(date2) + " 23:59:59";
         } else {
-            return new SimpleDateFormat("yyyy-MM-dd").format(date1)
-                    + " 23:59:59";
+            return new SimpleDateFormat("yyyy-MM-dd").format(date1) + " 23:59:59";
         }
     }
 
@@ -122,27 +118,29 @@ public class DateUtil {
     public static String getDateEnd(Date date) {
         return new SimpleDateFormat("yyyy-MM-dd").format(date) + " 23:59:59";
     }
-    
+
     /**
      * 判断系统当前时间是否在给定的日期之前
+     * 
      * @param date
      * @return
      */
     public static boolean isBefore(Date date) {
         return getCurrentDateTime().before(date);
     }
-    
+
     /**
      * 根据日历的规则，在给定日期的指定日历字段添加或减去指定的时间量
+     * 
      * @author lichengjun
-     * @since  SQQ-tick V100R001, 2014年4月14日
+     * @since SQQ-tick V100R001, 2014年4月14日
      * @param date
      * @param calendarField
      * @param amount
      * @return
      */
     public static Date add(Date date, int calendarField, int amount) {
-        if(date == null) {
+        if (date == null) {
             throw new IllegalArgumentException("The date must not be null");
         } else {
             Calendar c = Calendar.getInstance();
@@ -151,22 +149,22 @@ public class DateUtil {
             return c.getTime();
         }
     }
-    
-    
+
     /**
      * 判断系统当前时间是否在给定的日期之后
+     * 
      * @param date
      * @return
      */
     public static boolean isAfter(Date date) {
         return !isBefore(date);
     }
-    
+
     private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     private static SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    
+
     public static Date getTimeDate(String time) {
-        //format "yyyy-MM-dd HH:mm:00"
+        // format "yyyy-MM-dd HH:mm:00"
         String string = sdf.format(getCurrentDateTime());
         string += " " + time;
         Date date = null;
@@ -177,11 +175,11 @@ public class DateUtil {
         }
         return date;
     }
-    
+
     public static String format(Date date) {
         return sdf2.format(date);
     }
-    
+
     public static Date stringToDateTime(String dateStr) {
         Date date = null;
         try {
@@ -211,18 +209,13 @@ public class DateUtil {
     public static void main(String[] args) {
         System.out.println(DateUtil.getCurrentDateTime());
         System.out.println(DateUtil.getTheDayBefore());
-        System.out.println(DateUtil.getDatesByRange(DateUtil.getTheDayBefore(),
-                DateUtil.getCurrentDateTime()));
-        System.out.println(DateUtil.getDatesByRange(
-                DateUtil.getCurrentDateTime(), DateUtil.getTheDayBefore()));
-        System.out.println(DateUtil.getDateStart(DateUtil.getCurrentDateTime(),
-                DateUtil.getTheDayBefore()));
-        System.out.println(DateUtil.getDateEnd(DateUtil.getCurrentDateTime(),
-                DateUtil.getTheDayBefore()));
-        System.out
-                .println(DateUtil.getDateStart(DateUtil.getCurrentDateTime()));
+        System.out.println(DateUtil.getDatesByRange(DateUtil.getTheDayBefore(), DateUtil.getCurrentDateTime()));
+        System.out.println(DateUtil.getDatesByRange(DateUtil.getCurrentDateTime(), DateUtil.getTheDayBefore()));
+        System.out.println(DateUtil.getDateStart(DateUtil.getCurrentDateTime(), DateUtil.getTheDayBefore()));
+        System.out.println(DateUtil.getDateEnd(DateUtil.getCurrentDateTime(), DateUtil.getTheDayBefore()));
+        System.out.println(DateUtil.getDateStart(DateUtil.getCurrentDateTime()));
         System.out.println(DateUtil.getDateEnd(DateUtil.getCurrentDateTime()));
-        
+
         System.out.println(sdf2.format(getTimeDate("18:00")));
     }
 }

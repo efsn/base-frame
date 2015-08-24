@@ -1,6 +1,6 @@
 package com.codeyn.jfinal.interceptor;
 
-import com.codeyn.jfinal.controller.BaseController;
+import com.codeyn.jfinal.base.BaseController;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;

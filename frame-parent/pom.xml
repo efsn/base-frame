@@ -456,24 +456,17 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>site-zk</artifactId>
-				<version>1.0-SNAPSHOT</version>
+				<groupId>com.codeyn</groupId>
+				<artifactId>frame-zk</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
 			</dependency>
 
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>site-jfinal</artifactId>
-				<version>1.1-SNAPSHOT</version>
-			</dependency>
-			
 			<dependency>
 				<groupId>com.codeyn</groupId>
 				<artifactId>frame-base</artifactId>
 				<version>1.0.0-SNAPSHOT</version>
 			</dependency>
 		
-
 			<dependency>
 				<groupId>com.codeyn</groupId>
 				<artifactId>frame-jfinal</artifactId>
@@ -481,9 +474,9 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>resource-bus</artifactId>
-				<version>1.0-SNAPSHOT</version>
+				<groupId>com.codeyn</groupId>
+				<artifactId>frame-resource-bus</artifactId>
+				<version>1.0.0-SNAPSHOT</version>
 			</dependency>
 
 			<dependency>
