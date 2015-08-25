@@ -20,7 +20,6 @@ import java.util.TreeMap;
  * HashMap<Foo,Bar> map = MapUtil.build(Foo.class,Bar.class).add(foo,
  * bar).toHashMap(); <br/>
  * 
- * @author leyr 2014年4月10日 下午2:54:17
  */
 public class MapUtil {
 

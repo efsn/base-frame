@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.codeyn.jfinal.annos.JFinalAnnos.ModelMapping;
 import com.codeyn.jfinal.annos.JFinalAnnos.Route;
 import com.codeyn.jfinal.handler.HeartBeatHandler;
 import com.codeyn.jfinal.handler.IndexHandler;
@@ -26,6 +27,8 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
+import com.jfinal.plugin.activerecord.Model;
+import com.jfinal.plugin.c3p0.C3p0Plugin;
 
 import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.TemplateHashModel;
@@ -91,17 +94,47 @@ public abstract class BaseConfig extends JFinalConfig {
         onConfigRoute(me);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void configPlugin(Plugins me) {
         if (ctx != null) {
             me.add(new SpringPlugin(ctx));
         }
-        for (ActiveRecordPlugin arp : arps) {
-            me.add(arp);
+
+        // default mysql datasource
+        C3p0Plugin c3p0 = new C3p0Plugin(prop.getProperties());
+        me.add(c3p0);
+        ActiveRecordPlugin mysql = new ActiveRecordPlugin(c3p0);
+        Set<Class<?>> classes = PackageScanner.scanPackage(new ClassFilter() {
+
+            @Override
+            public boolean access(Class<?> clazz) {
+                return Model.class.isAssignableFrom(clazz) && Model.class != clazz
+                        && clazz.isAnnotationPresent(ModelMapping.class);
+            }
+
+        }, "");
+
+        for (Class<?> clazz : classes) {
+            ModelMapping mm = clazz.getAnnotation(ModelMapping.class);
+            if (StringUtils.isBlank(mm.primary())) {
+                mysql.addMapping(mm.value(), (Class<? extends Model<?>>) clazz);
+            } else {
+                mysql.addMapping(mm.value(), mm.primary(), (Class<? extends Model<?>>) clazz);
+            }
         }
+        me.add(mysql);
+
+        // something else
+        if (arps != null) {
+            for (ActiveRecordPlugin arp : arps) {
+                me.add(arp);
+            }
+        }
+
         onConfigPlugin(me);
     }
-
+    
     @Override
     public void configInterceptor(Interceptors me) {
         if (ctx != null) {

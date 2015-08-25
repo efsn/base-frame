@@ -7,7 +7,6 @@ import org.apache.http.Header;
 /**
  * HTTP响应包装类
  * 
- * @author leyuanren 2013-9-2 下午4:06:52
  */
 public class Response {
 

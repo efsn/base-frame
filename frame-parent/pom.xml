@@ -17,13 +17,6 @@
 		<slf4j.version>1.7.6</slf4j.version>
 	</properties>
 
-	<!-- nexus <distributionManagement> <repository> <id>nexus-releases</id> 
-		<name>nexus distribution snapshot repository</name> <url>http://nexus.shangquanquan.com/content/repositories/releases/</url> 
-		</repository> <snapshotRepository> <id>nexus-snapshots</id> <name>nexus distribution 
-		snapshot repository</name> <url>http://nexus.shangquanquan.com/content/repositories/snapshots/</url> 
-		</snapshotRepository> </distributionManagement> -->
-
-
 	<!-- 所有项目都会用到的依赖 -->
 	<dependencyManagement>
 		<dependencies>
@@ -138,18 +131,17 @@
 				<version>2.2</version>
 			</dependency>
 
-
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpclient</artifactId>
 				<version>4.3.1</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.apache.httpcomponents</groupId>
 				<artifactId>httpcore</artifactId>
 				<version>4.3</version>
 			</dependency>
-
 
 			<dependency>
 				<groupId>cglib</groupId>
@@ -180,10 +172,6 @@
 				<artifactId>jackson-mapper-asl</artifactId>
 				<version>1.8.1</version>
 			</dependency>
-
-
-
-
 
 			<!-- blow is spring -->
 
@@ -415,95 +403,18 @@
 				<version>1.3.1.RELEASE</version>
 			</dependency>
 
-
-
 			<!-- blow is internal component -->
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>site-common</artifactId>
-				<version>1.0-SNAPSHOT</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>db-frame</artifactId>
-				<version>1.0-SNAPSHOT</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>site-dubbo</artifactId>
-				<version>1.2-SNAPSHOT</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>security-tool</artifactId>
-				<version>1.0-SNAPSHOT</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>sitemesh-extend</artifactId>
-				<version>1.0-SNAPSHOT</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>site-log</artifactId>
-				<version>1.0-SNAPSHOT</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.codeyn</groupId>
-				<artifactId>frame-zk</artifactId>
-				<version>1.0.0-SNAPSHOT</version>
-			</dependency>
 
 			<dependency>
 				<groupId>com.codeyn</groupId>
 				<artifactId>frame-base</artifactId>
 				<version>1.0.0-SNAPSHOT</version>
 			</dependency>
-		
+
 			<dependency>
 				<groupId>com.codeyn</groupId>
 				<artifactId>frame-jfinal</artifactId>
 				<version>1.0.0-SNAPSHOT</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.codeyn</groupId>
-				<artifactId>frame-resource-bus</artifactId>
-				<version>1.0.0-SNAPSHOT</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>resource-ds-depends</artifactId>
-				<version>1.0-SNAPSHOT</version>
-				<type>pom</type>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>resource-mq-depends</artifactId>
-				<version>1.0-SNAPSHOT</version>
-				<type>pom</type>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>resource-redis-depends</artifactId>
-				<version>1.0-SNAPSHOT</version>
-				<type>pom</type>
-			</dependency>
-
-			<dependency>
-				<groupId>com.sqq</groupId>
-				<artifactId>sequence</artifactId>
-				<version>1.0-SNAPSHOT</version>
 			</dependency>
 
 		</dependencies>

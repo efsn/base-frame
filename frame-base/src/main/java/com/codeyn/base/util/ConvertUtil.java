@@ -5,7 +5,6 @@ import java.util.Date;
 /**
  * 类ConvertUtil.java的实现描述：通用的对象转换工具类
  * 
- * @author leyuanren 2013-11-15 上午8:48:50
  */
 public class ConvertUtil {
 

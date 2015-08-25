@@ -9,7 +9,6 @@ import org.apache.http.message.BasicNameValuePair;
 /**
  * HTTP请求信息包装类
  * 
- * @author leyuanren 2013-6-14 下午2:16:09
  */
 
 public class Request {

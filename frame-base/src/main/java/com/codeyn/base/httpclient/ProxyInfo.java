@@ -3,7 +3,6 @@ package com.codeyn.base.httpclient;
 /**
  * 包装代理认证信息
  * 
- * @author leyuanren 2013-9-3 下午7:25:46
  */
 public class ProxyInfo {
 

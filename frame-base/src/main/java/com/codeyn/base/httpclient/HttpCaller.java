@@ -39,7 +39,6 @@ import org.slf4j.LoggerFactory;
 /**
  * HTTP调用工具类，内部使用连接池管理
  * 
- * @author leyuanren 2013-6-14 下午2:53:48
  */
 @SuppressWarnings("deprecation")
 public class HttpCaller {

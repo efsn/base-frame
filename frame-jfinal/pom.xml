@@ -34,11 +34,6 @@
 
 		<dependency>
 			<groupId>com.codeyn</groupId>
-			<artifactId>frame-resource-bus</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.codeyn</groupId>
 			<artifactId>frame-base</artifactId>
 		</dependency>
 
@@ -78,46 +73,19 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>net.sf.ehcache</groupId>
-			<artifactId>ehcache-core</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib-nodep</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-		</dependency>
-
 	</dependencies>
 
 	<build>
+
 		<finalName>frame-jfinal</finalName>
+
 		<resources>
-		
+
 			<resource>
 				<directory>${project.basedir}src/main/resources</directory>
 				<filtering>true</filtering>
 			</resource>
-			
-			<resource>
-				<directory>${project.basedir}src/main/java</directory>
-				<includes>
-					<include>**/*Mapper.xml</include>
-				</includes>
-			</resource>
-			
+
 		</resources>
 
 		<plugins>

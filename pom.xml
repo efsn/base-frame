@@ -14,26 +14,6 @@
   	<module>frame-parent</module>
 	<module>frame-base</module>
 	<module>frame-jfinal</module>
-	
-	<module>frame-resource-bus</module>
-	<module>frame-zk</module>
-	<!--
-	
-	<module>frame-log</module>
-	
-	<module>frame-db</module>
-	<module>frame-dubbo</module>
-	
-	<module>resource-ds-depends</module>
-	<module>resource-mq-depends</module>
-	<module>resource-redis-depends</module>
-	
-	<module>security-tool</module>
-	<module>sequence</module>
-	<module>sitemesh-extend</module>
-	
-	-->
-	
   </modules>
   
   <properties>
