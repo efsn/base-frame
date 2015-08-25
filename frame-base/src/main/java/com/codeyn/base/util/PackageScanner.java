@@ -1,4 +1,4 @@
-package com.codeyn.utils;
+package com.codeyn.base.util;
 
 import java.io.BufferedInputStream;
 import java.io.File;

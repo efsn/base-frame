@@ -8,6 +8,8 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.codeyn.base.util.PackageScanner;
+import com.codeyn.base.util.PackageScanner.ClassFilter;
 import com.codeyn.jfinal.annos.JFinalAnnos.ModelMapping;
 import com.codeyn.jfinal.annos.JFinalAnnos.Route;
 import com.codeyn.jfinal.handler.HeartBeatHandler;
@@ -17,8 +19,6 @@ import com.codeyn.jfinal.interceptor.ExceptionInterceptor;
 import com.codeyn.jfinal.interceptor.PostInterceptor;
 import com.codeyn.jfinal.plugins.spring.IocInterceptor;
 import com.codeyn.jfinal.plugins.spring.SpringPlugin;
-import com.codeyn.utils.PackageScanner;
-import com.codeyn.utils.PackageScanner.ClassFilter;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
