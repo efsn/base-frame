@@ -76,7 +76,7 @@ public class BaseSiteMeshFilter extends ContentBufferingFilter {
                                           ResponseMetaData metaData) {
         return new WebAppContext(contentType, request, response,
                                  getFilterConfig().getServletContext(),
-                                 contentProcessor, metaData);
+                                 contentProcessor, metaData, true);
     }
 
 }
