@@ -76,8 +76,8 @@ public class PackageScanner{
                     }
                     pac = "classpath*:" + pac + "**/*.class";
                     resources.addAll(Arrays.asList(resourceLoader.getResources(pac)));
-                    return resources.toArray(new Resource[0]);
                 }
+                return resources.toArray(new Resource[0]);
             }
             return resourceLoader.getResources("classpath*:**/*.class");
         }catch(IOException e){

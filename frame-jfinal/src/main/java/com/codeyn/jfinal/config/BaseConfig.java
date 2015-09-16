@@ -29,6 +29,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
+import com.jfinal.render.FreeMarkerRender;
 
 import freemarker.ext.beans.BeansWrapper;
 import freemarker.template.TemplateHashModel;
@@ -131,7 +132,6 @@ public abstract class BaseConfig extends JFinalConfig {
                 me.add(arp);
             }
         }
-
         onConfigPlugin(me);
     }
     
@@ -183,6 +183,14 @@ public abstract class BaseConfig extends JFinalConfig {
     public void setIndexPath(String path) {
         if (path != null) {
             home = new IndexHandler(path);
+        }
+    }
+    
+    protected void setSharedVariable(Set<String> packages) {
+        Set<Class<?>> clazzs = PackageScanner.scanPackage(packages.toArray(new String[0]));
+        for (Class<?> clazz : clazzs) {
+            TemplateHashModel temp = buildStaticTemplate(clazz.getName());
+            FreeMarkerRender.getConfiguration().setSharedVariable(clazz.getSimpleName(), temp);
         }
     }
     
