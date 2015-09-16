@@ -30,18 +30,18 @@ import com.codeyn.sitemesh.SiteMeshTagRuleBundle;
  */
 public class SiteMeshFilter extends ConfigurableSiteMeshFilter {
 
-    private BaseSiteMeshFilter extendFilter;
+    private BaseSiteMeshFilter baseFilter;
 
     @Override
     protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
         builder.setTagRuleBundles(new SiteMeshTagRuleBundle());
-        extendFilter = new BaseSiteMeshFilter(builder.getSelector(), builder.getContentProcessor());
+        baseFilter = new BaseSiteMeshFilter(builder.getSelector(), builder.getContentProcessor());
     }
 
     @Override
     protected Filter setup() throws ServletException {
         super.setup();
-        return extendFilter;
+        return baseFilter;
     }
 
 }
