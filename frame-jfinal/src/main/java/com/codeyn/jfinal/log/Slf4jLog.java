@@ -2,17 +2,17 @@ package com.codeyn.jfinal.log;
 
 import org.slf4j.LoggerFactory;
 
-import com.jfinal.log.Logger;
+import com.jfinal.log.Log;
 
-public class Slf4jLogger extends Logger {
+public class Slf4jLog extends Log {
 
     private org.slf4j.Logger proxy;
 
-    public Slf4jLogger(String name) {
+    public Slf4jLog(String name) {
         proxy = LoggerFactory.getLogger(name);
     }
 
-    public Slf4jLogger(Class<?> clazz) {
+    public Slf4jLog(Class<?> clazz) {
         proxy = LoggerFactory.getLogger(clazz);
     }
 
